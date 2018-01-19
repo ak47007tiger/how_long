@@ -11,4 +11,5 @@ public class HowLongRecord {
     public String name;
     public String detail;
     public long takeDuration;
+    public long expectDuration;
 }
