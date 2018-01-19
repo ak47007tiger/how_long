@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/how_long.iml" filepath="$PROJECT_DIR$/how_long.iml" />
+      <module fileurl="file://E:\projects\projects_as_2018\how_long\how_long.iml" filepath="E:\projects\projects_as_2018\how_long\how_long.iml" />
       <module fileurl="file://$PROJECT_DIR$/hpldevtoolkit/hpldevtoolkit.iml" filepath="$PROJECT_DIR$/hpldevtoolkit/hpldevtoolkit.iml" />
+      <module fileurl="file://E:\projects\projects_as_2018\how_long\hpldevtoolkit\hpldevtoolkit.iml" filepath="E:\projects\projects_as_2018\how_long\hpldevtoolkit\hpldevtoolkit.iml" />
     </modules>
   </component>
 </project>
