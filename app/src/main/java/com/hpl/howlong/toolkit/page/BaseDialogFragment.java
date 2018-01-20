@@ -7,4 +7,5 @@ import com.trello.rxlifecycle.components.RxDialogFragment;
  */
 
 public class BaseDialogFragment extends RxDialogFragment{
+
 }
