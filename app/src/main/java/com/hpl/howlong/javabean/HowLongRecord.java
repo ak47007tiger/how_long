@@ -7,9 +7,12 @@ import java.util.Date;
  */
 
 public class HowLongRecord {
-    public Date createTime;
     public String name;
+    public Date createTime;
     public String detail;
-    public long takeDuration;
     public long expectDuration;
+    public long takeDuration;
+
+    public boolean processing;
+    public long startIncreaseTime;
 }

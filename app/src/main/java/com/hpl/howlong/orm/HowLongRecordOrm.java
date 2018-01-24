@@ -9,9 +9,12 @@ import java.util.Date;
  */
 
 public class HowLongRecordOrm extends SugarRecord{
-  public long createTime;
   public String name;
+  public long createTime;
   public String detail;
-  public long takeDuration;
   public long expectDuration;
+  public long takeDuration;
+
+  public boolean processing;
+  public long startIncreaseTime;
 }

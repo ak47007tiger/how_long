@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">HowLong</string>
     <string name="welcome">welcome</string>
+    <string name="start">start</string>
+    <string name="stop">stop</string>
+    <string name="delete">delete</string>
+    <string name="edit">edit</string>
 </resources>

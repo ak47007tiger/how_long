@@ -1,10 +1,13 @@
 package com.hpl.howlong.data;
 
 import com.hpl.howlong.javabean.HowLongRecord;
+import com.hpl.howlong.service.KeepAliveService;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Hpl on 2018/1/18.
@@ -17,6 +20,8 @@ public class AppData {
   public List<HowLongRecord> recordList = new ArrayList<>();
 
   public List<HowLongRecord> searchList = new ArrayList<>();
+
+  public Map<String,HowLongRecord> idToRecord = new HashMap<>();
 
   public RecordPage recordPage;
 
