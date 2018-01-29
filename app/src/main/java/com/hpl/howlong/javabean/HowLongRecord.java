@@ -13,6 +13,5 @@ public class HowLongRecord {
     public long expectDuration;
     public long takeDuration;
 
-    public boolean processing;
-    public long startIncreaseTime;
+
 }
