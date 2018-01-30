@@ -9,6 +9,8 @@ import java.util.Date;
  */
 
 public class RecordTimerDataOrm extends SugarRecord {
+  HowLongRecordOrm recordOrm;
+
   public boolean processing;
   public long startIncreaseTime;
 }

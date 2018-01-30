@@ -1,12 +1,15 @@
 package com.hpl.howlong.page.detail;
 
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.hpl.howlong.R;
 import com.hpl.howlong.javabean.HowLongRecord;
+import com.hpl.howlong.thirdpart.RxBus;
 import com.hpl.howlong.toolkit.page.BaseFragment;
 
 import butterknife.BindView;
@@ -20,12 +23,12 @@ public class DetailFragment extends BaseFragment {
 
   HowLongRecord howLongRecord;
 
+  @BindView(R.id.nameAndCreateTimeTv)
+  TextView nameAndCreateTimeTv;
   @BindView(R.id.expectDurationTv)
   TextView expectDurationTv;
   @BindView(R.id.durationTv)
   TextView durationTv;
-  @BindView(R.id.nameAndCreateTimeTv)
-  TextView nameAndCreateTimeTv;
   @BindView(R.id.startBtn)
   Button startBtn;
   @BindView(R.id.endBtn)
@@ -39,9 +42,21 @@ public class DetailFragment extends BaseFragment {
   }
 
   @Override
+  public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    RxBus.get().register(this);
+  }
+
+  @Override
   public void onResume() {
     super.onResume();
     updateUI(howLongRecord);
+  }
+
+  @Override
+  public void onDestroy() {
+    RxBus.get().unregister(this);
+    super.onDestroy();
   }
 
   @OnClick({R.id.startBtn, R.id.endBtn})
@@ -66,4 +81,5 @@ public class DetailFragment extends BaseFragment {
 
     }
   }
+
 }
