@@ -2,6 +2,7 @@ package com.hpl.howlong;
 
 import android.app.Application;
 import android.content.Intent;
+import android.os.Handler;
 
 import com.hpl.howlong.service.KeepAliveService;
 
@@ -10,9 +11,27 @@ import com.hpl.howlong.service.KeepAliveService;
  */
 
 public class HowLongApp extends Application{
+
+    private static HowLongApp instance;
+
+    public static HowLongApp get(){
+        return instance;
+    }
+
+    public boolean showedSpl = false;
+
+    public final Handler handler = new Handler();
+
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         startService(new Intent(getApplicationContext(), KeepAliveService.class));
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        instance = null;
     }
 }

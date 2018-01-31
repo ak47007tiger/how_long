@@ -25,7 +25,15 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.hpl.howlong.orm"/>
 
-        <activity android:name=".page.HomeActivity">
+        <activity android:name=".page.spl.SplActivity" android:theme="@style/SplActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".page.HomeActivity" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -33,12 +41,6 @@
                 <!--how_long_app://hello.how.long/how_are_you-->
                 <data android:scheme="how_long_app"
                     android:host="hello.how.long" />
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

@@ -60,7 +60,7 @@ public class RecordListFragment extends BaseFragment implements IRecordList {
       listAdapter.notifyDataSetChanged();
   }
 
-  private class ListItemHolder extends RecyclerView.ViewHolder {
+  class ListItemHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.nameAndCreateTimeTv)
     TextView nameAndCreateTimeTv;

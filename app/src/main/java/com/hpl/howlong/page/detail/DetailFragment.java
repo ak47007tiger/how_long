@@ -11,6 +11,9 @@ import com.hpl.howlong.R;
 import com.hpl.howlong.javabean.HowLongRecord;
 import com.hpl.howlong.thirdpart.RxBus;
 import com.hpl.howlong.toolkit.page.BaseFragment;
+import com.hwangjr.rxbus.annotation.Subscribe;
+import com.hwangjr.rxbus.annotation.Tag;
+import com.hwangjr.rxbus.thread.EventThread;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -45,6 +48,13 @@ public class DetailFragment extends BaseFragment {
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     RxBus.get().register(this);
+  }
+
+  @Subscribe(tags = @Tag(RxBus.Action_Record_Timer_Data_Update), thread = EventThread.MAIN_THREAD)
+  public void onRecordTimerDataUpdate(Object event){
+    if (!isVisible())
+      return;
+    updateUI(howLongRecord);
   }
 
   @Override
