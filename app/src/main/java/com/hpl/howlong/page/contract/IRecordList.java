@@ -1,6 +1,6 @@
 package com.hpl.howlong.page.contract;
 
-import com.hpl.howlong.javabean.HowLongRecord;
+import com.hpl.howlong.javabean.DurationRecord;
 
 import java.util.List;
 
@@ -9,6 +9,6 @@ import java.util.List;
  */
 
 public interface IRecordList {
-  void setHowLongList(List<HowLongRecord> records);
+  void setHowLongList(List<DurationRecord> records);
   void updateList();
 }

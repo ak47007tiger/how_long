@@ -7,7 +7,7 @@ import java.util.Calendar;
  */
 
 public class RecordTimerData {
-  public HowLongRecord howLongRecord;
+  public DurationRecord durationRecord;
 
   public boolean processing;
   public Calendar startIncreaseTime;

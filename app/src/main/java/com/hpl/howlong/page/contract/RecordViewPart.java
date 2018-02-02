@@ -3,7 +3,7 @@ package com.hpl.howlong.page.contract;
 import android.widget.EditText;
 
 import com.hpl.howlong.R;
-import com.hpl.howlong.javabean.HowLongRecord;
+import com.hpl.howlong.javabean.DurationRecord;
 
 import butterknife.BindView;
 
@@ -12,7 +12,7 @@ import butterknife.BindView;
  */
 
 public class RecordViewPart extends BaseViewPart implements IRecordView{
-  private HowLongRecord howLongRecord;
+  private DurationRecord durationRecord;
 
   @BindView(R.id.nameEt)
   EditText nameEt;
@@ -26,26 +26,26 @@ public class RecordViewPart extends BaseViewPart implements IRecordView{
   @BindView(R.id.minuteEt)
   EditText minuteEt;
 
-  public void setHowLongRecord(HowLongRecord howLongRecord) {
-    this.howLongRecord = howLongRecord;
-    nameEt.setText(howLongRecord.name);
-    detailEt.setText(howLongRecord.detail);
+  public void setDurationRecord(DurationRecord durationRecord) {
+    this.durationRecord = durationRecord;
+    nameEt.setText(durationRecord.name);
+    detailEt.setText(durationRecord.detail);
 
-    int days = (int) (howLongRecord.expectDuration/(3600 * 24));
-    int hours = (int) (howLongRecord.expectDuration/3600);
-    int minutes = (int) (howLongRecord.expectDuration%3600/60);
+    int days = (int) (durationRecord.expectDuration/(3600 * 24));
+    int hours = (int) (durationRecord.expectDuration/3600);
+    int minutes = (int) (durationRecord.expectDuration%3600/60);
     dayEt.setText(String.valueOf(days));
     hourEt.setText(String.valueOf(hours));
     minuteEt.setText(String.valueOf(minutes));
   }
 
-  public HowLongRecord collectDataFromUI(){
-    howLongRecord.name = nameEt.getText().toString();
-    howLongRecord.detail = detailEt.getText().toString();
+  public DurationRecord collectDataFromUI(){
+    durationRecord.name = nameEt.getText().toString();
+    durationRecord.detail = detailEt.getText().toString();
     int days = Integer.getInteger(dayEt.getText().toString());
     int hours = Integer.getInteger(hourEt.getText().toString());
     int minutes = Integer.getInteger(minuteEt.getText().toString());
-    howLongRecord.expectDuration = days * (3600 * 24) + hours * 36000 + minutes * 60;
-    return howLongRecord;
+    durationRecord.expectDuration = days * (3600 * 24) + hours * 36000 + minutes * 60;
+    return durationRecord;
   }
 }

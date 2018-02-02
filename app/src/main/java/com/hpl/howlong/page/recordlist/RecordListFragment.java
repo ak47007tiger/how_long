@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.hpl.howlong.R;
-import com.hpl.howlong.javabean.HowLongRecord;
+import com.hpl.howlong.javabean.DurationRecord;
 import com.hpl.howlong.page.contract.IRecordList;
-import com.hpl.howlong.page.detail.DetailFragment;
+import com.hpl.howlong.thirdpart.message.RxBus;
 import com.hpl.howlong.toolkit.page.BaseFragment;
+import com.hwangjr.rxbus.annotation.Subscribe;
+import com.hwangjr.rxbus.annotation.Tag;
+import com.hwangjr.rxbus.thread.EventThread;
 
 import java.util.List;
 
@@ -27,7 +31,7 @@ import butterknife.ButterKnife;
 
 public class RecordListFragment extends BaseFragment implements IRecordList {
 
-  List<HowLongRecord> records;
+  List<DurationRecord> records;
 
   @BindView(R.id.recordListRv)
   RecyclerView recordListRv;
@@ -44,17 +48,24 @@ public class RecordListFragment extends BaseFragment implements IRecordList {
   }
 
   @Override
+  public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+    getActivity().getMenuInflater().inflate(R.menu.record_list_context_menu, menu);
+    super.onCreateContextMenu(menu, v, menuInfo);
+  }
+
+  @Override
   protected int getLayoutId() {
     return R.layout.record_list_fragment;
   }
 
   @Override
-  public void setHowLongList(List<HowLongRecord> records) {
+  public void setHowLongList(List<DurationRecord> records) {
     this.records = records;
     updateList();
   }
 
   @Override
+  @Subscribe(tags = {@Tag(RxBus.TAG_UPDATE_RECORD_LIST)}, thread = EventThread.MAIN_THREAD)
   public void updateList() {
     if (null != listAdapter)
       listAdapter.notifyDataSetChanged();
@@ -87,14 +98,14 @@ public class RecordListFragment extends BaseFragment implements IRecordList {
   View.OnClickListener onDeleteListener = new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-      HowLongRecord record = (HowLongRecord) v.getTag();
+      DurationRecord record = (DurationRecord) v.getTag();
     }
   };
 
   private View.OnClickListener onEditListener = new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-      HowLongRecord record = (HowLongRecord) v.getTag();
+      DurationRecord record = (DurationRecord) v.getTag();
     }
   };
 
@@ -102,10 +113,8 @@ public class RecordListFragment extends BaseFragment implements IRecordList {
     @Override
     public void onClick(View v) {
       int position = recordListRv.getLayoutManager().getPosition(v);
-      HowLongRecord record = (HowLongRecord) v.getTag();
-      DetailFragment detailFragment = new DetailFragment();
-      getActivity().getFragmentManager().beginTransaction().add(detailFragment, "DetailFragment")
-          .commit();
+      DurationRecord record = (DurationRecord) v.getTag();
+
     }
   };
 
@@ -124,7 +133,7 @@ public class RecordListFragment extends BaseFragment implements IRecordList {
 
     @Override
     public void onBindViewHolder(ListItemHolder holder, int position) {
-      HowLongRecord record = records.get(position);
+      DurationRecord record = records.get(position);
       holder.itemView.setTag(record);
       holder.editBtn.setTag(record);
       holder.deleteBtn.setTag(record);

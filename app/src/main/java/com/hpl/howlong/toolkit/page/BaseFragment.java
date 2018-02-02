@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
-import com.trello.rxlifecycle.components.RxFragment;
+import com.hpl.howlong.toolkit.ViewValue;
+import com.trello.rxlifecycle.components.support.RxFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -15,7 +17,7 @@ import butterknife.Unbinder;
  * Created by Hpl on 2018/1/18.
  */
 
-public abstract class BaseFragment extends RxFragment{
+public abstract class BaseFragment extends RxFragment {
 
   private Unbinder unbinder;
 
@@ -44,4 +46,13 @@ public abstract class BaseFragment extends RxFragment{
     unbinder.unbind();
     super.onDestroyView();
   }
+
+  public boolean empty(EditText editText){
+    return ViewValue.empty(editText);
+  }
+
+  public int getInt(EditText editText, int defaultValue){
+    return ViewValue.getInt(editText, defaultValue);
+  }
+
 }

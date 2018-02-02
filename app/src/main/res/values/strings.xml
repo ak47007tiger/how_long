@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HowLong</string>
+    <string name="app_name">TimeFlies</string>
     <string name="welcome_content">Time Flies</string>
     <string name="start">start</string>
     <string name="stop">stop</string>

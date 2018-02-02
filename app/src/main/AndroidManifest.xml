@@ -20,7 +20,7 @@
             android:value="1"/>
         <meta-data
             android:name="QUERY_LOG"
-            android:value="false"/>
+            android:value="true"/>
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.hpl.howlong.orm"/>

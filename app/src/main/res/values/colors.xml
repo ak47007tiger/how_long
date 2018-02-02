@@ -3,4 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorDarkWindow">#0e0d15</color>
+
+    <drawable name="spl_window">#0e0d15</drawable>
 </resources>

@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.hpl.howlong.R;
-import com.hpl.howlong.javabean.HowLongRecord;
-import com.hpl.howlong.thirdpart.RxBus;
+import com.hpl.howlong.javabean.DurationRecord;
+import com.hpl.howlong.thirdpart.message.RxBus;
 import com.hpl.howlong.toolkit.page.BaseFragment;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
@@ -24,7 +24,7 @@ import butterknife.OnClick;
 
 public class DetailFragment extends BaseFragment {
 
-  HowLongRecord howLongRecord;
+  DurationRecord durationRecord;
 
   @BindView(R.id.nameAndCreateTimeTv)
   TextView nameAndCreateTimeTv;
@@ -47,25 +47,25 @@ public class DetailFragment extends BaseFragment {
   @Override
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    RxBus.get().register(this);
+    RxBus.register(this);
   }
 
-  @Subscribe(tags = @Tag(RxBus.Action_Record_Timer_Data_Update), thread = EventThread.MAIN_THREAD)
+  @Subscribe(tags = {@Tag(RxBus.TAG_RECORD_TIMER_DATA_UPDATE)}, thread = EventThread.MAIN_THREAD)
   public void onRecordTimerDataUpdate(Object event){
     if (!isVisible())
       return;
-    updateUI(howLongRecord);
+    updateUI(durationRecord);
   }
 
   @Override
   public void onResume() {
     super.onResume();
-    updateUI(howLongRecord);
+    updateUI(durationRecord);
   }
 
   @Override
   public void onDestroy() {
-    RxBus.get().unregister(this);
+    RxBus.unregister(this);
     super.onDestroy();
   }
 
@@ -79,15 +79,15 @@ public class DetailFragment extends BaseFragment {
     }
   }
 
-  public void setHowLongRecord(HowLongRecord howLongRecord) {
-    this.howLongRecord = howLongRecord;
+  public void setDurationRecord(DurationRecord durationRecord) {
+    this.durationRecord = durationRecord;
     if (isVisible()) {
-      updateUI(howLongRecord);
+      updateUI(durationRecord);
     }
   }
 
-  void updateUI(HowLongRecord howLongRecord) {
-    if (howLongRecord != null) {
+  void updateUI(DurationRecord durationRecord) {
+    if (durationRecord != null) {
 
     }
   }
